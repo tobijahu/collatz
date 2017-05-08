@@ -1,0 +1,10 @@
+digraph G {
+   1 -> 4 [color=blue];
+   2 -> 1 [color=red];
+   3 -> 10 [color=blue];
+   4 -> 2 [color=red];
+   5 -> 16 [color=blue];
+   8 -> 4 [color=red];
+   10 -> 5 [color=red];
+   16 -> 8 [color=red];
+ }
