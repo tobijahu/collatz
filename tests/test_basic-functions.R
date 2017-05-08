@@ -1,5 +1,6 @@
 
 #setwd("/home/your-user/path-to-your-collatz-clone-folder/") 
+# Or just start R from that folder
 
 source("basic-functions.R")
 
@@ -43,28 +44,3 @@ print(CollatzIterationSteps(c(1:5))==c(0,1,7,2,5))
 print(CollatzIterationSteps(c(3:5))==c(NA,NA,7,2,5))
 print(CollatzIterationSteps(c(3:5,7))==c(NA,NA,7,2,5,NA,16))
 
-print("Functions for large numbers")
-print(FirstNonZeroDigitInString("00112263")==3)
-print(FirstNonZeroDigitInString("112263")==1)
-
-print("CollatzStepLN()")
-# Is the remainder processed correctly, if the new number is larger?
-print(as.numeric(CollatzStepLN("561315"))==3*561315+1)
-# Are zeros erased, if not necessary?
-print(as.numeric(CollatzStepLN("00112263"))==3*112263+1)
-print(as.numeric(CollatzStepLN("00112260"))==112260/2)
-# Are some large numbers processed correctly?
-print(CollatzStepLN("22222222222222222222")=="11111111111111111111")
-print(CollatzStepLN("12222222222222222222")=="6111111111111111111")
-
-
-
-print("CollatzIterationLN()")
-# Does the function return correct values for as.character(1)?
-print(CollatzIterationLN(as.character(1))$seq==list(seq=c("1"),nsteps=0)$seq)
-print(CollatzIterationLN(as.character(1))$nsteps==list(seq=c("1"),nsteps=0)$nsteps)
-# Are the results equal to those of CollatzIteration()?
-print(CollatzIteration(9)$nsteps==CollatzIterationLN(as.character(9))$nsteps)
-ergebnis <- NULL
-for (result in CollatzIteration(9)$seq) ergebnis <- c(ergebnis, as.character(result))
-print(ergebnis==CollatzIterationLN(as.character(9))$seq)
