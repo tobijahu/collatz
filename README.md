@@ -9,9 +9,9 @@ It is also known as the `3x+1`-problem.
 You may find more introduction and references about this at the [The Collatz conjecture](http://www.youtube.com/watch?v=5mFpVDpKX70) video by David Eisenbud on Youtube.
 
 ## Content
-By running for example
-`sh run_script.sh 50`
-the content for iterations up to _50_ can be created. The output is put to the **output** folder. 
+By running `sh run_script.sh 50` the content for iterations up to _50_ can be created. The output is put to the **output** folder. 
+
+`run_script_large-numbers.sh` creates files concerning large numbers, which include the results of the computations of Mersenne prime #9 and Mersenne prime #20. _This script will possibly run several hours!_
 
 ### .dot digraph
 The following digraph includes all iterations of numbers from _1_ to _5_.
