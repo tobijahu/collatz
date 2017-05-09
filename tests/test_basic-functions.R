@@ -39,7 +39,7 @@ print(CollatzIterationVector(1)==c(4,1,NA,2))
 print(CollatzIterationVector(3)==c(4,1,10,2,16,NA,NA,4,NA,5,NA,NA,NA,NA,NA,8))
 print(CollatzIterationVector(c(1:2,4))==c(4,1,NA,2))
 
-print("CollatzIterationSteps")
+print("CollatzIterationSteps()")
 print(CollatzIterationSteps(c(1:5))==c(0,1,7,2,5))
 print(CollatzIterationSteps(c(3:5))==c(NA,NA,7,2,5))
 print(CollatzIterationSteps(c(3:5,7))==c(NA,NA,7,2,5,NA,16))
