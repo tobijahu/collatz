@@ -23,6 +23,10 @@ print(as.numeric(CollatzStepLN("00112260"))==112260/2)
 # Are some large numbers processed correctly?
 print(CollatzStepLN("22222222222222222222")=="11111111111111111111")
 print(CollatzStepLN("12222222222222222222")=="6111111111111111111")
+print("CollatzStepLN(): Check arguments")
+tryCatch(CollatzStepLN(""), error = function(e) print(TRUE))
+tryCatch(CollatzStepLN(NULL), error = function(e) print(TRUE))
+tryCatch(CollatzStepLN(5), error = function(e) print(TRUE))
 
 print("CollatzIterationLN()")
 # Does the function return correct values for as.character(1)?
@@ -33,6 +37,10 @@ print(CollatzIteration(9)$nsteps==CollatzIterationLN(as.character(9))$nsteps)
 ergebnis <- NULL
 for (result in CollatzIteration(9)$seq) ergebnis <- c(ergebnis, as.character(result))
 print(ergebnis==CollatzIterationLN(as.character(9))$seq)
+print("CollatzIterationLN(): Checking arguments")
+tryCatch(CollatzIterationLN(""), error = function(e) print(TRUE))
+tryCatch(CollatzIterationLN(NULL), error = function(e) print(TRUE))
+tryCatch(CollatzIterationLN(5), error = function(e) print(TRUE))
 
 print("CompareOrder()")
 print(CompareOrder("0","-1")==1)
@@ -42,6 +50,10 @@ print(CompareOrder("-1","0")==-1)
 print(CompareOrder("-5","9994")==-1)
 print(CompareOrder("-5","4")==-1)
 print(CompareOrder("112","112")==0)
+print("CompareOrder(): Checking arguments")
+tryCatch(CompareOrder("", "41"), error = function(e) print(TRUE))
+tryCatch(CompareOrder(NULL, "41"), error = function(e) print(TRUE))
+tryCatch(CompareOrder(5, "41"), error = function(e) print(TRUE))
 
 print("AddIntStrings()")
 # Check, if it basically does what it primarily should do!
@@ -63,10 +75,12 @@ print(AddIntStrings("559", "10000000009")==559+10000000009)
 print(AddIntStrings("-559", "-10000000009")==-559-10000000009)
 print(AddIntStrings("559", "-10000000009")==559-10000000009)
 print(AddIntStrings("-559", "10000000009")==-559+10000000009)
+print("AddIntStrings(): Checking arguments")
 # Does the function return NULL, if another result does not make any sense?
 #tryCatch(AddIntStrings("", "41"), error = function(e) e)
 tryCatch(AddIntStrings("", "41"), error = function(e) print(TRUE))
 tryCatch(AddIntStrings(NULL, "41"), error = function(e) print(TRUE))
+tryCatch(AddIntStrings(3, "41"), error = function(e) print(TRUE))
 #print(is.null(AddIntStrings(NULL, "41")))
 
 
@@ -74,8 +88,21 @@ print("MultiplyIntStrings()")
 # Check, if it basically does what it primarily should do!
 print(MultiplyIntStrings("10","10")==as.character(10*10))
 print(MultiplyIntStrings("2","-512")==as.character(2*(-512)))
+# Zero element:
 print(MultiplyIntStrings("0","-1")==as.character(0*(-1)))
-print(MultiplyIntStrings("-7","-1")==as.character((-7)*(-1)))
-# Does the function return NULL, if another result does not make any sense?
-print(is.null(MultiplyIntStrings(NULL,"-1")))
-print(is.null(MultiplyIntStrings("8",NULL)))
+print(MultiplyIntStrings("4","0")==as.character(4*0))
+# Neutral element:
+print(MultiplyIntStrings("-7","1")==as.character((-7)*1))
+print(MultiplyIntStrings("1","-31")==as.character(1*(-31)))
+# Inverse is not implemented
+# Computing negative numbers
+print(MultiplyIntStrings("-1","-9")==as.character((-1)*(-9)))
+print(MultiplyIntStrings("-1111","-999")==as.character((-1111)*(-999)))
+print("MultiplyIntStrings(): Checking arguments")
+# Does the function throw an error, if an argument is NULL?
+tryCatch(MultiplyIntStrings(NULL,"-1"), error=function(e) print(TRUE))
+tryCatch(MultiplyIntStrings("8",NULL), error=function(e) print(TRUE))
+# Does the function throw an error, if an argument is an empty string?
+tryCatch(MultiplyIntStrings("k", "41"), error=function(e) print(TRUE))
+tryCatch(MultiplyIntStrings("2", ""), error=function(e) print(TRUE))
+tryCatch(MultiplyIntStrings(2, "1"), error=function(e) print(TRUE))

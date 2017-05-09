@@ -46,6 +46,8 @@ GetVectorOfCharacters <- function(number.string){
 CollatzStepLN <- function(number.string){
 	if(!is.character(number.string))
 		stop("Argument is not of type character.")
+	if(number.string=="")
+		stop("Argument is an empty string.")
 	if (is.even(as.numeric(strsplit(number.string,"")[[1]][nchar(number.string)]))){
 		# process even numbers: x/2
 		new.number.string <- NULL
@@ -87,6 +89,8 @@ CollatzStepLN <- function(number.string){
 CollatzIterationLN <- function(number.string){
 	if(!is.character(number.string))
 		stop("Argument is not of type character.")
+	if(number.string=="")
+		stop("Argument is an empty string.")
 	v <- NULL
 	# remove leading zeros
 	for (character in GetVectorOfCharacters(number.string))
@@ -349,13 +353,13 @@ AddIntStrings <- function(number.string, another.number.string){
 	return(new.number.string)
 }
 # Example:
-#AddNumberStrings("559", "41")
+#AddIntStrings("559", "41")
 
 MultiplyIntStrings <- function(number.string, another.number.string){
-	if(is.null(number.string) || is.null(another.number.string) || another.number.string=="" || number.string=="" )
-		return(NULL)
+	if(another.number.string=="" || number.string=="" )
+		stop("An argument is an empty string.")
 	if(!is.character(number.string) || !is.character(another.number.string))
-		stop("Argument is not of type character.")
+		stop("An argument is not of type character.")
 	
 	# process the signs of both numbers
 	number.string.sign <- another.number.string.sign <- 1
@@ -392,7 +396,7 @@ MultiplyIntStrings <- function(number.string, another.number.string){
 			for (zero in rep("0",k+l))
 				pre.temp.number <- paste(zero, pre.temp.number, sep="")
 			temp.number.string <- paste(as.character(temp.number), pre.temp.number, sep="")
-			new.number.string <- AddNumberStrings(new.number.string, temp.number.string)
+			new.number.string <- AddIntStrings(new.number.string, temp.number.string)
 			l <- l+1 
 		}
 		k <- k+1
@@ -405,4 +409,4 @@ MultiplyIntStrings <- function(number.string, another.number.string){
 	return(new.number.string)
 }
 # Example:
-#MultiplyInt("10","10")
+#MultiplyIntStrings("10","10")
