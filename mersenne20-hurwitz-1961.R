@@ -14,7 +14,12 @@ for(i in c(1:multiplicationSteps)){
 }
 number <- MultiplyIntStrings(number, as.character(2**remainingDigits))
 mersenne20 <- AddIntStrings(number, "-1")
-#cat(mersenne20)
-#mersenne20IterationSteps <- CollatzIterationLN(mersenne20)
-#cat(mersenne20IterationSteps)
+
+cat("## Digits of the number:")
+cat(mersenne20)
+mersenne20Iteration <- CollatzIterationLN(mersenne20)
+cat("## Number of steps until it reaches 1:")
+cat(mersenne20Iteration$nsteps)
+cat("## Iteration steps:")
+cat(mersenne20Iteration$seq)
 

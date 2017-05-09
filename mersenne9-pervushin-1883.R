@@ -7,9 +7,6 @@ if(!exists("MultiplyInt", mode="function")) source("basic-functions-large-number
 # candidate to test the large numbers functions for the Collatz function.
 
 number <- "1"
-#for(i in c(1:61)){
-#	number <- MultiplyNaturalDigit(number,2)
-#}
 remainingDigits <- 61 %% .Machine$double.digits
 multiplicationSteps <- (61-remainingDigits)/.Machine$double.digits
 for(i in c(1:multiplicationSteps)){
@@ -17,9 +14,11 @@ for(i in c(1:multiplicationSteps)){
 }
 number <- MultiplyIntStrings(number, as.character(2**remainingDigits))
 mersenne9 <- AddIntStrings(number, "-1")
-#cat(mersenne9)
-mersenne9IterationSteps <- CollatzIterationLN(mersenne9)
-#cat(mersenne9IterationSteps$seq)
-#cat(mersenne9IterationSteps$nsteps)
-print(mersenne9IterationSteps)
 
+cat("## Digits of the number:")
+cat(mersenne9)
+mersenne9Iteration <- CollatzIterationLN(mersenne9)
+cat("## Number of steps until it reaches 1:")
+cat(mersenne9Iteration$nsteps)
+cat("## Iteration steps:")
+cat(mersenne9Iteration$seq)

@@ -32,6 +32,7 @@ echo "Printing number of iterations of numbers from 1 to $n"
 Rscript $PFD/print-nsteps-up-to-n.R $n \
 	> $PFD/output/print_nsteps-up-to-$n.txt
 
+
 # Which questions might be of interest to have a closer look on?
 # 1. Let the number of iteration steps from a given number to 1 be 
 #    its distance. Is there a relation between a number and its 
